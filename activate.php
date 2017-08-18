@@ -1,17 +1,6 @@
-<!--The user is redirected to this file after clicking the activation link
-Sign up link contains 2 GET parameters: email and activation keys
-If email activation key is missing, show error
-else
-	Store them in 2 variables
-	Prepare variables for the query
-	Run query: set activation field to "activated" for the provided email
-	if query is successful, show success message and invite user to login
-else
-	show error message-->
-	
 <?php 
-
-session_start():
+@ob_start();
+session_start();
 include('connection.php');
 
 ?>
@@ -75,42 +64,44 @@ include('connection.php');
 	  </div><!-- /.container-fluid -->
 	</nav>
     
-    <div class="container">
-    	<div class="row">
-    		<div class="col-md-6 col-md-offset-3 col-sm-12">
-    			<?php 
-				
-					if(!isset($_GET['email']) || !isset($_GET['key'])) {
-						echo '<div class="alert alert-danger">ERROR! Please follow the activation link in your email.</div>';
-						exit;
-					}
+    <section class="jumbotron hero">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-6 col-md-offset-3 col-sm-12">
+					<?php 
+
+						if(!isset($_GET['email']) || !isset($_GET['key'])) {
+							echo '<div class="alert alert-danger">ERROR! Please follow the activation link in your email.</div>';
+							exit;
+						}
 
 
-					$email = $_GET['email'];
-					$key = $_GET['key'];
+						$email = $_GET['email'];
+						$key = $_GET['key'];
 
 
-					$email = mysqli_real_escape_string($link, $email);
+						$email = mysqli_real_escape_string($link, $email);
 
-					$key = mysqli_real_escape_string($link, $key);
+						$key = mysqli_real_escape_string($link, $key);
 
-					$sql = "UPDATE users SET activation = 'activated' WHERE (email = '$email' AND activation = '$key') LIMIT 1";
+						$sql = "UPDATE users SET activation = 'activated' WHERE (email = '$email' AND activation = '$key') LIMIT 1";
 
-					$result = mysqli_query($link, $sql);
+						$result = mysqli_query($link, $sql);
 
 
-					if(mysqli_affected_rows($link) == 1) {
-						echo '<div class="alert alert-success">Account successfully activated</div>';
-						echo '<a href="index.php" type="button" class="btn-lg btn-success">Return to Home</a>';
-					} else {
-						echo '<div class="alert alert-danger">Account not activated. Pleas etry again later</div>';
-					}
+						if(mysqli_affected_rows($link) == 1) {
+							echo '<div class="alert alert-success">Account successfully activated</div>';
+							echo '<a href="index.php" type="button" class="btn-lg btn-success">Return to Home</a>';
+						} else {
+							echo '<div class="alert alert-danger">Account not activated. Pleas etry again later</div>';
+						}
 
-				
-				?>
-    		</div>
-    	</div>
-    </div>
+
+					?>
+				</div>
+			</div>
+		</div>
+   </section>
     
     <footer>
     	<div class="container">
@@ -129,4 +120,15 @@ include('connection.php');
 
 
 
+<!--The user is redirected to this file after clicking the activation link
+Sign up link contains 2 GET parameters: email and activation keys
+If email activation key is missing, show error
+else
+	Store them in 2 variables
+	Prepare variables for the query
+	Run query: set activation field to "activated" for the provided email
+	if query is successful, show success message and invite user to login
+else
+	show error message-->
+	
 

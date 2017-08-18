@@ -1,24 +1,5 @@
-<!--Start Session
-Connect to database
-
-
-Check User Inputs
-	Define error messages
-	Get Username, email, password and password2
-	Store errors in errors variable
-	If there are any errors - print error
-	
-No errors?
-	Prepare variables for the queries
-	If username exits in the users table print error
-	else
-		If email exits, print error
-	else
-		Create a unique activation code
-		Insert user details and activation code in the users table
-		send the user an email with a link to activate.php with their email and activation code-->
-		
 <?php 
+	@ob_start();
 	session_start();
 
 	include('connection.php');
@@ -136,3 +117,28 @@ No errors?
 	}
 
 ?>
+
+
+
+
+
+
+<!--Start Session
+Connect to database
+
+
+Check User Inputs
+	Define error messages
+	Get Username, email, password and password2
+	Store errors in errors variable
+	If there are any errors - print error
+	
+No errors?
+	Prepare variables for the queries
+	If username exits in the users table print error
+	else
+		If email exits, print error
+	else
+		Create a unique activation code
+		Insert user details and activation code in the users table
+		send the user an email with a link to activate.php with their email and activation code-->
