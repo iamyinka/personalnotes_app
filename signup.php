@@ -78,14 +78,60 @@ No errors?
 	$email = mysqli_real_escape_string($link, $email);
 	
 	$password = mysqli_real_escape_string($link, $password);
+	$password = md5($password);
 
 
-	$sql = "SELECT * FROM 'users' WHERE username = $username";
+	$sql = "SELECT * FROM users WHERE username = '$username'";
 	$result = mysqli_query($link, $sql);
 
 	if(!$result) {
-		echo '<div class="alert alert-danger">Errir running the query!</div>';
+		echo '<div class="alert alert-danger">Error running the query!</div>';
+		/*echo '<div class="alert alert-danger">' . mysqli_error($link) . '</div>';*/
 		exit;
+	}
+
+	$results = mysqli_num_rows($result);
+
+	if($results) {
+		echo '<div class="alert alert-danger">Username already exists! Perhaps try loggin in.</div>';
+		exit;
+	}
+
+	
+
+	$sql = "SELECT * FROM users WHERE email = '$email'";
+	$result = mysqli_query($link, $sql);
+
+	if(!$result) {
+		echo '<div class="alert alert-danger">Error running the query!</div>';
+		exit;
+	}
+
+	$results = mysqli_num_rows($result);
+
+	if($results) {
+		echo '<div class="alert alert-danger">Email already exists! Perhaps try loggin in.</div>';
+		exit;
+	}
+
+
+	$activationKey = bin2hex(openssl_random_pseudo_bytes(16));
+
+	$sql = "INSERT into users (`username`, `email`, `password`, `activation') VALUES ('$username', '$email', '$password', '$activationKey')";
+
+	$result = mysqli_query($link, $sql);
+
+	if(!$result) {
+		echo '<div class="alert alert-danger">Error saving user details into the database.</div>';
+		exit;
+	}
+
+
+	$message = "Please follow the link to activate your account: \n\n";
+	$message = "http://localhost:8000/activate.php?email=" . urlencode($email) . "&key=$activationKey";
+
+	if(mail($email, "Confirm your registration", $message, 'From: ' . 'perpetualcoder@gmail.com')) {
+		echo '<div class="alert alert-success">Thank you for registering. Please follow the activation instructions sent to your ' . $email . '.</div>';
 	}
 
 ?>
