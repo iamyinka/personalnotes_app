@@ -1,0 +1,221 @@
+@import url('https://fonts.googleapis.com/css?family=Signika+Negative:400,600,700|Satisfy');
+
+
+/*
+#8ED4FB / rgb(142, 212, 251)
+#4FE2FE / rgb(79, 226, 254)
+#DDFCD8 / rgb(221, 252, 216)
+#FF8687 / rgb(255, 134, 135)
+#69707E / rgb(105, 112, 126)
+#B7B0CF / rgb(183, 176, 207)
+#F9EBC7 / rgb(249, 235, 199)
+*/
+
+html {
+	position: relative;
+	min-height: 100%;
+}
+
+
+body {
+	font-size: 16px;
+	font-family: "Signika Negative", sans-serif;
+	background: linear-gradient(rgba(0, 0, 0, .3), rgba(0, 0, 0, .5)), url(/images/piano.jpg) center center no-repeat;
+	background-size: cover;
+	background-attachment: fixed;
+	text-rendering: optimizeLegibility;
+	-webkit-font-smoothing: antialiased;
+}
+
+
+.navbar-custom {
+  background-color: #fddbc2;
+  border-color: #fcc8a2;
+  background-image: -webkit-gradient(linear, left 0%, left 100%, from(#fff8f3), to(#fddbc2));
+  background-image: -webkit-linear-gradient(top, #fff8f3, 0%, #fddbc2, 100%);
+  background-image: -moz-linear-gradient(top, #fff8f3 0%, #fddbc2 100%);
+  background-image: linear-gradient(to bottom, #fff8f3 0%, #fddbc2 100%);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fffff8f3', endColorstr='#fffddbc2', GradientType=0);
+}
+.navbar-custom .navbar-brand {
+  color: #222222;
+}
+.navbar-custom .navbar-brand:hover,
+.navbar-custom .navbar-brand:focus {
+  color: #080808;
+  background-color: transparent;
+}
+.navbar-custom .navbar-text {
+  color: #222222;
+}
+.navbar-custom .navbar-nav > li:last-child > a {
+  border-right: 1px solid #fcc8a2;
+}
+.navbar-custom .navbar-nav > li > a {
+  color: #222222;
+  border-left: 1px solid #fcc8a2;
+}
+.navbar-custom .navbar-nav > li > a:hover,
+.navbar-custom .navbar-nav > li > a:focus {
+  color: #888888;
+  background-color: transparent;
+}
+.navbar-custom .navbar-nav > .active > a,
+.navbar-custom .navbar-nav > .active > a:hover,
+.navbar-custom .navbar-nav > .active > a:focus {
+  color: #888888;
+  background-color: #fcc8a2;
+  background-image: -webkit-gradient(linear, left 0%, left 100%, from(#fcc8a2), to(#fee5d3));
+  background-image: -webkit-linear-gradient(top, #fcc8a2, 0%, #fee5d3, 100%);
+  background-image: -moz-linear-gradient(top, #fcc8a2 0%, #fee5d3 100%);
+  background-image: linear-gradient(to bottom, #fcc8a2 0%, #fee5d3 100%);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fffcc8a2', endColorstr='#fffee5d3', GradientType=0);
+}
+.navbar-custom .navbar-nav > .disabled > a,
+.navbar-custom .navbar-nav > .disabled > a:hover,
+.navbar-custom .navbar-nav > .disabled > a:focus {
+  color: #cccccc;
+  background-color: transparent;
+}
+.navbar-custom .navbar-toggle {
+  border-color: #dddddd;
+}
+.navbar-custom .navbar-toggle:hover,
+.navbar-custom .navbar-toggle:focus {
+  background-color: #dddddd;
+}
+.navbar-custom .navbar-toggle .icon-bar {
+  background-color: #cccccc;
+}
+.navbar-custom .navbar-collapse,
+.navbar-custom .navbar-form {
+  border-color: #fcc79f;
+}
+.navbar-custom .navbar-nav > .dropdown > a:hover .caret,
+.navbar-custom .navbar-nav > .dropdown > a:focus .caret {
+  border-top-color: #888888;
+  border-bottom-color: #888888;
+}
+.navbar-custom .navbar-nav > .open > a,
+.navbar-custom .navbar-nav > .open > a:hover,
+.navbar-custom .navbar-nav > .open > a:focus {
+  background-color: #fcc8a2;
+  color: #888888;
+}
+.navbar-custom .navbar-nav > .open > a .caret,
+.navbar-custom .navbar-nav > .open > a:hover .caret,
+.navbar-custom .navbar-nav > .open > a:focus .caret {
+  border-top-color: #888888;
+  border-bottom-color: #888888;
+}
+.navbar-custom .navbar-nav > .dropdown > a .caret {
+  border-top-color: #222222;
+  border-bottom-color: #222222;
+}
+@media (max-width: 767) {
+  .navbar-custom .navbar-nav .open .dropdown-menu > li > a {
+    color: #222222;
+  }
+  .navbar-custom .navbar-nav .open .dropdown-menu > li > a:hover,
+  .navbar-custom .navbar-nav .open .dropdown-menu > li > a:focus {
+    color: #888888;
+    background-color: transparent;
+  }
+  .navbar-custom .navbar-nav .open .dropdown-menu > .active > a,
+  .navbar-custom .navbar-nav .open .dropdown-menu > .active > a:hover,
+  .navbar-custom .navbar-nav .open .dropdown-menu > .active > a:focus {
+    color: #888888;
+    background-color: #fcc8a2;
+  }
+  .navbar-custom .navbar-nav .open .dropdown-menu > .disabled > a,
+  .navbar-custom .navbar-nav .open .dropdown-menu > .disabled > a:hover,
+  .navbar-custom .navbar-nav .open .dropdown-menu > .disabled > a:focus {
+    color: #cccccc;
+    background-color: transparent;
+  }
+}
+.navbar-custom .navbar-link {
+  color: #222222;
+}
+.navbar-custom .navbar-link:hover {
+  color: #888888;
+}
+
+.navbar-custom {
+	border-radius: 0;
+	margin-bottom: 0;
+}
+
+.navbar-brand {
+	text-transform: uppercase;
+}
+
+.loggedin {
+	font-weight: 700;
+}
+
+.btn-custom {
+/*	margin: 10px 0;*/
+	background-color: rgba(142, 212, 251, .7);
+	color: #000;
+	border-radius: 10px;
+	transition: all .5s;
+}
+
+.btn-custom:hover {
+	color: #444;
+	background-color: rgb(142, 212, 251);
+}
+
+
+.hero {
+	color:floralwhite;
+	height: 100%;
+	min-width: 100%;
+	text-align: center;
+	padding: 170px 0;
+	background-color: transparent;
+}
+
+.hero h1 {
+	font-size: 2.5em;
+}
+
+.hero p {
+	font-size: 1.5em;
+}
+
+.hero p.quoted {
+	font-family: "Satisfy", sans-serif;
+}
+
+footer {
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	background-color: #fddbc2;
+	height: 50px;
+	line-height: 50px;
+	text-align: center;
+	
+}
+
+footer a {
+	color: #000;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
