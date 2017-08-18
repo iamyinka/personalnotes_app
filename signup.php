@@ -78,7 +78,8 @@ No errors?
 	$email = mysqli_real_escape_string($link, $email);
 	
 	$password = mysqli_real_escape_string($link, $password);
-	$password = md5($password);
+//	$password = md5($password);
+	$password = hash('sha256', $password);
 
 
 	$sql = "SELECT * FROM users WHERE username = '$username'";
@@ -117,7 +118,7 @@ No errors?
 
 	$activationKey = bin2hex(openssl_random_pseudo_bytes(16));
 
-	$sql = "INSERT into users (`username`, `email`, `password`, `activation') VALUES ('$username', '$email', '$password', '$activationKey')";
+	$sql = "INSERT into users (`username`, `email`, `password`, `activation`) VALUES ('$username', '$email', '$password', '$activationKey')";
 
 	$result = mysqli_query($link, $sql);
 
@@ -127,10 +128,10 @@ No errors?
 	}
 
 
-	$message = "Please follow the link to activate your account: \n\n";
-	$message = "http://localhost:8000/activate.php?email=" . urlencode($email) . "&key=$activationKey";
+	$message = "Please follow the link to activate your account:\n\n";
+	$message .= "http://localhost:8000/activate.php?email=" . urlencode($email) . "&key=$activationKey";
 
-	if(mail($email, "Confirm your registration", $message, 'From: ' . 'perpetualcoder@gmail.com')) {
+	if(mail($email, 'Confirm your registration', $message, 'From: ' . 'perpetualcoder@gmail.com')) {
 		echo '<div class="alert alert-success">Thank you for registering. Please follow the activation instructions sent to your ' . $email . '.</div>';
 	}
 
